@@ -1,0 +1,43 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pygame_gesture_kit"
+version = "0.0.1"
+authors = [{name="Daniel Arnold", email="pypi@darnold.org"}]
+description = "Camera based hand tracking and gesture recognition for pygame"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
+    "Operating System :: OS Independent",
+    "Topic :: Games/Entertainment",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Graphics :: Capture :: Digital Camera",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS"
+]
+dependencies = [
+    "pygame",
+    "mediapipe",
+    "numpy",
+    "opencv-python",
+    "importlib-resources"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"pygame_gesture_kit.model" = ["*.task"]
+
+[project.urls]
+Homepage = "https://github.com/FreeBugs/pygame_gesture_kit"
+Issues = "https://github.com/FreeBugs/pygame_gesture_kit/issues"
