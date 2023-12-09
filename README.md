@@ -70,7 +70,11 @@ for hand in gesture_recognizer.get_hands():
 ```
 
 ## Installing
-You can install pygame_gesture_kit directly from this github repo:
+You can install pygame_gesture_kit using the PyPI package manager:
+```shell
+python -m pip install pygame-gesture-kit
+```
+alternatively, install it directly from this github repo:
 ```shell
 python -m pip install git+https://github.com/FreeBugs/pygame_gesture_kit.git
 ```
