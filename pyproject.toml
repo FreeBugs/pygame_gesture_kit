@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygame_gesture_kit"
-version = "0.0.2"
+version = "0.0.3"
 authors = [{name="Daniel Arnold", email="pypi@darnold.org"}]
 description = "Camera based hand tracking and gesture recognition for pygame"
 readme = "README.md"
@@ -25,10 +25,10 @@ classifiers = [
     "Operating System :: MacOS"
 ]
 dependencies = [
-    "pygame",
+    "pygame-ce",
     "mediapipe",
-    "numpy",
-    "opencv-python",
+    "numpy>=2.0",
+    "opencv-python>=4.11",
     "importlib-resources"
 ]
 

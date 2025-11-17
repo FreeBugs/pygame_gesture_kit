@@ -17,7 +17,7 @@ class GestureRecognizer:
     """
 
     def __init__(self, capture_device, max_hands=2, min_detection_confidence=.7, min_tracking_confidence=.7,
-                 custom_model_path=None):
+                 custom_model_path=None, gesture_thread_suspend=0.06):
         """
         Initializes a GestureRecognizer with the capture device (camera) specified. The parameters for hand recognition
         settings are passed to MediaPipe.
@@ -27,9 +27,13 @@ class GestureRecognizer:
         :param min_tracking_confidence: The minimum confidence to consider tracking between frames
         (passed to MediaPipe).
         :param custom_model_path: A custom model can be loaded by the recognizer.
+        :param gesture_thread_suspend: Time in seconds to suspend the gesture recognition thread. You can try lower
+        values but this usually causes the UI to become LESS responsive. Try larger values (0.7, 0.8, ...) if you
+        experience frame rate drops when hands are detected.
         """
         self._visible_hands = 0
         self._capture_device = capture_device
+        self._gesture_thread_suspend = gesture_thread_suspend
         self._is_running = False
         self._worker = None
         self._hands = []
@@ -50,7 +54,7 @@ class GestureRecognizer:
         vision_running_mode = mp.tasks.vision.RunningMode
         options = gesture_recognizer_options(
             base_options=base_options(
-                model_asset_path=model_path),
+                model_asset_path=model_path, delegate=python.BaseOptions.Delegate.CPU),
             num_hands=max_hands,
             min_tracking_confidence=min_tracking_confidence,
             min_hand_detection_confidence=min_detection_confidence,
@@ -96,7 +100,7 @@ class GestureRecognizer:
                 mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=cap)
                 self._timestamp += 1
                 self.gesture_recognizer.recognize_async(mp_image, self._timestamp)
-                time.sleep(.01)
+                time.sleep(self._gesture_thread_suspend)
 
     def start(self) -> None:
         """
