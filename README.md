@@ -1,5 +1,6 @@
 # pygame_gesture_kit
-**Easy camera based hand tracking and gesture recognition for pygame**
+**Easy camera based hand tracking and gesture recognition for
+[pygame-ce](https://github.com/pygame-community/pygame-ce)**
 
 Take a look at the [PyGame-ComputerVision-Racer 🚗](https://github.com/FreeBugs/pygame_cv_racer) game for an example
 project.
@@ -26,6 +27,9 @@ It provides the following labels:
 * thumbs up/down: `like`, `dislike`
 
 ## How to use it
+
+**Important note: MediaPipe is currently only available for Python 3.12 and older so you can't use pygame_gesture_kit
+with Python 3.13/3.14 at this time.**
 
 A comprehensive example is provided in the `example` directory. Basically, you need to import and use two classes
 in your code: the `Camera` and `GestureRecognizer`.
@@ -81,3 +85,20 @@ python -m pip install git+https://github.com/FreeBugs/pygame_gesture_kit.git
 
 If you are using PyCharm, you can install the package from the Package Manager by selecting
 **Add Package** -> **From Version Control**.
+
+## Contributing
+1. (Optional) [Fork the repo](https://github.com/FreeBugs/pygame_gesture_kit/fork)
+2. Clone the repo
+```
+git clone https://github.com/FreeBugs/pygame_gesture_kit.git
+```
+3. Install dependencies 
+```
+cd pygame_gesture_kit
+python3 -m pip install .
+```
+4. Run the example
+```
+python3 src/pygame_gesture_kit/example/main.py
+```
+5. Feel free to open a pull request if you add something or make pygame_gesture_kit better.
